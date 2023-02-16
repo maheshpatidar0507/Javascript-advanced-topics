@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async/Await</title>
+  </head>
+  <body></body>
+  <script>
+    // Without async/await
+    function getData() {
+      let data = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("hello!, I am successful");
+        }, 1000);
+      });
+      data.then((item) => {
+        console.log("Without-asunch/await: ", item);
+      });
+    }
+    getData();
+
+    // With async/await
+    async function getData1() {
+      let data = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("hello!, I am successful");
+        }, 1000);
+      });
+      //   data.then((item) => {
+      //     console.log(item);
+      //   });
+      let x = await data;
+      console.log("With-asunch/await: ", x);
+    }
+    getData1();
+  </script>
+</html>

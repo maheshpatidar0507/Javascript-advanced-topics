@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>promise</title>
+  </head>
+  <body></body>
+  <script>
+    let promise1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject("I dont know");
+      }, 3000);
+    });
+    let promise2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("promise2");
+      }, 2000);
+    });
+    let promise3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("promise3");
+      }, 3000);
+    });
+    let promise4 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("promise4");
+      }, 4000);
+    });
+    let promis5 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("promise5");
+      }, 1000);
+    });
+    // Promise.allSettled()----------------------------------------------------------------
+    // let data = Promise.allSettled([
+    //   promise1,
+    //   promise2,
+    //   promise3,
+    //   promise4,
+    //   promis5,
+    // ])
+    //   .then((item) => {
+    //     console.log(item);
+    //   })
+    //   .catch((err) => {
+    //     console.log("Error:", err);
+    //   });
+
+    // promise.all()----------------------------------------------------------------
+    // let data = Promise.all([promise1, promise2, promise3, promise4, promis5])
+    //   .then((item) => {
+    //     console.log(item);
+    //   })
+    //   .catch((err) => {
+    //     console.log("Error:", err);
+    //   });
+
+    // promise.any()----------------------------------------------------------------
+    // let data = Promise.any([promise1, promise2, promise3, promise4, promis5])
+    //   .then((item) => {
+    //     console.log(item);
+    //   })
+    //   .catch((err) => {
+    //     console.log("Error:", err);
+    //   });
+
+    // Promice.race()----------------------------------------------------------------
+    let data = Promise.race([promise1, promise2, promise3, promise4, promis5])
+      .then((item) => {
+        console.log(item);
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
+  </script>
+</html>
