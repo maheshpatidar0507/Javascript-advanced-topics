@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>polyfill of filter</title>
+  </head>
+  <body></body>
+  <script>
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    console.log("Array", arr);
+    let filteredArray = arr.filter((data) => data % 2 === 0);
+    console.log("Filterd Array", filteredArray);
+
+    // -----------------------polyfill of Filter------------------------------------------------
+    Array.prototype.myFilter = function (callbackfn) {
+      let myFilteredArray = [];
+      for (let i = 0; i < this.length; i++) {
+        if (callbackfn(this[i])) {
+          myFilteredArray.push(this[i]);
+        }
+      }
+      return myFilteredArray;
+    };
+
+    function findEven(data) {
+      if (data % 2 === 0) {
+        return data;
+      }
+    }
+    let y = arr.myFilter(findEven);
+    console.log("myFilteredArray", y);
+  </script>
+</html>
