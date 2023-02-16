@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polyfill of <Map></Map></title>
+  </head>
+  <body></body>
+  <script>
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let newArray = arr.map((data) => data * 4);
+    console.log("Array: ", arr);
+    console.log("Maped Array", newArray);
+
+    // polyfill of map
+    Array.prototype.myMap = function (callbackFn) {
+      let mapedArray = [];
+      for (let i = 0; i < this.length; i++) {
+        mapedArray.push(multby4(this[i]));
+      }
+      return mapedArray;
+    };
+    // callback function
+    function multby4(data) {
+      return data * 4;
+    }
+    let x = arr.myMap();
+    console.log("polyfill:  ", x);
+  </script>
+</html>
